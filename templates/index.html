@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>{% block title %}Main page{% endblock %}</title>
+
+<form method="post" class="row g-3">
+  <div class="input-group mt-5">
+    <label class="input-group-text" for="input_n">n</label>
+    <select class="form-select sm" id="input_n" name="input_n">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="input-group-text" for="input_c" >c</label>
+    </div>
+    <div class="col-auto">
+      <input id="input_c" class="form-control" name="input_c">
+    </div>
+    <div class="col-auto">
+      <span id="c_HelpInline" class="form-text">
+        Number of values must be equal to "n".
+      </span>
+    </div>
+  </div>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="input-group-text" for="input_k" >k</label>
+    </div>
+    <div class="col-auto">
+      <input id="input_k" class="form-control" autocomplete="off" name="input_k">
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 d-md-block">
+    <button type="submit" class="btn btn-primary" name="solution" value="Solution">Accept</button>
+  </div>
+
+</form>
+{% endblock %}

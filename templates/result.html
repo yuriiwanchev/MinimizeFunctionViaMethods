@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>{% block title %}Result page{% endblock %}</title>
+
+<form method="post" class="row g-3">
+  <div class="mt-5">
+    <ul class="list-unstyled">
+      <li class="h3">Generalized Simulated Annealing</li>
+      <ul>
+        <li>Obtained minimum of a function:<strong> {{ res['res_da']['fun'] }}</strong></li>
+        <li>X for minimum of a function:<strong> {{ res['res_da']['x'] }}</strong></li>
+        <li>Сalculation time:<strong> {{ res['times']['da'] }}</strong> milliseconds</li>
+      </ul>
+    </ul>
+    <ul class="list-unstyled">
+      <li class="h3">Brute Force</li>
+      <ul>
+        <li>Obtained minimum of a function:<strong> {{ res['res_brute_f'] }}</strong></li>
+        <li>X for minimum of a function:<strong> {{ res['res_brute'] }}</strong></li>
+        <li>Сalculation time:<strong> {{ res['times']['brute'] }}</strong> milliseconds</li>
+      </ul>
+    </ul>
+    <ul class="list-unstyled">
+      <li class="h3">Minimization of scalar function using the Nelder-Mead algorithm</li>
+      <ul>
+        <li>Obtained minimum of a function:<strong> {{ res['res_m']['fun'] }}</strong></li>
+        <li>X for minimum of a function:<strong> {{ res['res_m']['x'] }}</strong></li>
+        <li>Сalculation time:<strong> {{ res['times']['min'] }}</strong> milliseconds</li>
+      </ul>
+    </ul>
+  </div>
+
+  <div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      Change methods parameters
+    </button>
+    <button type="submit" class="btn btn-primary" name="plot" value="Plot">Generate Plot</button>
+  </div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Options</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Number of iterations at Generalized Simulated Annealing</p>
+    <div class="mt-1">
+      <input id="input_n_da" class="form-control" autocomplete="off" name="input_n_da" placeholder="{{ options['maxiter_da'] }}" value="{{ options['maxiter_da'] }}">
+    </div>
+    <p class="mt-2">Number of  grid points along the axes at Brute Force</p>
+    <div class="mt-1">
+      <input id="input_n_b" class="form-control" autocomplete="off" name="input_n_b" placeholder="{{ options['maxiter_brute'] }}" value="{{ options['maxiter_brute'] }}">
+    </div>
+    <p class="mt-2">Number of iterations at Minimization of scalar function using the Nelder-Mead algorithm</p>
+    <div class="mt-1">
+      <input id="input_n_m" class="form-control" autocomplete="off" name="input_n_m" placeholder="{{ options['maxiter_min'] }}" value="{{ options['maxiter_min'] }}">
+    </div>
+
+    <div class="d-grid gap-2 d-md-block mt-4">
+      <button type="submit" class="btn btn-primary" name="restart" value="Restart">Accept</button>
+    </div>
+  </div>
+</div>
+
+</form>
+{% endblock %}
